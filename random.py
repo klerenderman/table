@@ -4,6 +4,11 @@ import pandas as pd
 from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
 from sklearn.model_selection import train_test_split # Import train_test_split function
 from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
+import numpy as np
+from sklearn.tree import export_graphviz
+from sklearn.externals.six import StringIO  
+from IPython.display import Image  
+import pydotplus
 
 col_names = ['pregnant', 'glucose', 'bp', 'skin', 'insulin', 'bmi', 'pedigree', 'age', 'label']
 # load dataset
@@ -41,9 +46,8 @@ export_graphviz(clf, out_file=dot_data,
 graph = pydotplus.graph_from_dot_data(dot_data.getvalue())  
 graph.write_png('diabetes.png')
 Image(graph.create_png())
-=======
-#tools
-import numpy as np
+#=======
+
 
 #getting data
 data = pd.read_csv("airfoil_noise_data.csv")
@@ -193,11 +197,6 @@ class DecisionTreeRegressor():
 
 X = data.iloc[:, :-1].values
 Y = data.iloc[:, -1].values.reshape(-1,1)
-
-from sklearn.tree import export_graphviz
-from sklearn.externals.six import StringIO  
-from IPython.display import Image  
-import pydotplus
 
 dot_data = StringIO()
 export_graphviz(clf, out_file=dot_data,  
