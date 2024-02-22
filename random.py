@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+#<<<<<<< HEAD
 # Load libraries
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
@@ -201,4 +201,4 @@ X = data.iloc[:, :-1].values
 Y = data.iloc[:, -1].values.reshape(-1,1)
 
 
->>>>>>> 032b61f39a30b8782d007682241d8ac6a15b3fd2
+#>>>>>>> 032b61f39a30b8782d007682241d8ac6a15b3fd2
