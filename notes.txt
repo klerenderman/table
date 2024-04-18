@@ -1,0 +1,34 @@
+I changed my export functions to be Scatter Plots and a heat Map, as this fits the air foil noise data better.
+
+Node Class
+Purpose: Represents a single node in the decision tree, which could be either a decision node or a leaf node.
+Attributes:
+feature_index: Index of the feature based on which the node splits the data.
+threshold: The value of the feature at which the split occurs.
+left, right: Pointers to the left and right child nodes of the current node.
+var_red: Variance reduction achieved by the split at this node.
+value: The prediction value, which is used if the node is a leaf.
+Constructor (__init__): Initializes a node with the provided attributes.
+DecisionTreeRegressor Class
+Purpose: Implements a decision tree for regression from scratch.
+Attributes:
+min_samples_split: The minimum number of samples required to split a node.
+max_depth: The maximum depth of the tree.
+root: The root node of the decision tree.
+Methods:
+Constructor (__init__): Initializes the decision tree regressor with specified parameters.
+build_tree(): Builds the decision tree recursively. It splits the dataset until the stopping conditions (based on min_samples_split and max_depth) are met.
+get_best_split(): Finds the best possible split for the dataset at a given node by iterating through all features and their unique values to determine the split that provides the maximum variance reduction.
+split(): Splits the dataset into two subsets using the given feature index and threshold.
+variance_reduction(): Calculates the reduction in variance that results from a particular split.
+calculate_leaf_value(): Determines the value of a leaf node, which is the mean of the target values in the dataset subset that reaches the leaf.
+print_tree(): Prints the tree in a human-readable format for debugging and understanding the tree structure.
+fit(): Trains the decision tree on the provided dataset by building the tree.
+make_prediction(): Makes a prediction for a single data point by traversing the tree from the root to a leaf.
+predict(): Applies the make_prediction method to each instance in a dataset and returns the predictions.
+
+Functionality Overview:
+The decision tree starts its life cycle with the fit method, where it receives the training data.
+Inside fit, it calls build_tree, which recursively splits the data until the base cases defined by max_depth or min_samples_split are met.
+The tree uses get_best_split at each node to determine where to split the data, which involves calculating potential variance reduction (variance_reduction) from splitting at each unique value of each feature.
+Once the tree is built, predictions can be made by passing data through the predict method, which traverses the tree for each instance, following decision paths based on feature thresholds until reaching a leaf node.
